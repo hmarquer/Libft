@@ -1,11 +1,23 @@
-void	*memset(void *str, int c, unsigned int n)
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_memset.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hmarquer <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/09/13 10:39:41 by hmarquer          #+#    #+#             */
+/*   Updated: 2023/09/13 10:39:42 by hmarquer         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+void	*memset(void *str, int c, size_t n)
 {
 	unsigned int	i;
 
 	i = 0;
 	while (i < n)
 	{
-		str[i] = c;
+		str[i] = (unsigned char)c;
 		i++;
 	}
 	return (str);

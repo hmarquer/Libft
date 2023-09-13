@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_memmove.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hmarquer <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/09/13 10:44:44 by hmarquer          #+#    #+#             */
+/*   Updated: 2023/09/13 10:44:45 by hmarquer         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 void	*ft_memmove(void *dest, const void *src, unsigned int n)
 {
 	unsigned int	i;
@@ -21,5 +33,5 @@ void	*ft_memmove(void *dest, const void *src, unsigned int n)
 			i++;
 		}
 	}
-	return (dest);	
+	return (dest);
 }
