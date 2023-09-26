@@ -1,35 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strnstr.c                                       :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hmarquer <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/13 10:40:15 by hmarquer          #+#    #+#             */
-/*   Updated: 2023/09/13 10:40:21 by hmarquer         ###   ########.fr       */
+/*   Created: 2023/09/19 10:22:40 by hmarquer          #+#    #+#             */
+/*   Updated: 2023/09/19 10:22:41 by hmarquer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stddef.h>
+#include "libft.h"
 
-char	*ft_strnstr(char *str, char *to_find, size_t n)
+void	ft_putnbr_fd(int n, int fd)
 {
-	size_t	i;
-	size_t	j;
+	int		sgn;
+	char	c;
 
-	if (*to_find == '\0')
-		return (str);
-	i = 0;
-	while (str[i] != '\0' && i < n)
+	sgn = 1;
+	if (n < 0)
 	{
-		j = 0;
-		while (str[i + j] == to_find[j] && str[i + j] != '\0' && (i + j) < n)
-		{
-			if (to_find[j + 1] == '\0')
-				return (str + i);
-			j++;
-		}
-		i++;
+		ft_putchar_fd('-', fd);
+		sgn = -1;
 	}
-	return (NULL);
+	if (n / 10)
+		ft_putnbr_fd(n / 10 * sgn, fd);
+	c = '0' + n % 10 * sgn;
+	ft_putchar_fd(c, fd);
 }

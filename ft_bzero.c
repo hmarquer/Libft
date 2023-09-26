@@ -10,14 +10,10 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-void	bzero(void *str, unsigned int n)
-{
-	unsigned int	i;
+#include <stddef.h>
+#include "libft.h"
 
-	i = 0;
-	while (i < n)
-	{
-		*(str + i) = 0;
-		i++;
-	}
+void	ft_bzero(void *str, size_t n)
+{
+	ft_memset(str, 0, n);
 }

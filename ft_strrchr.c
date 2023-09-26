@@ -1,35 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strnstr.c                                       :+:      :+:    :+:   */
+/*   ft_ strrchr.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hmarquer <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/13 10:40:15 by hmarquer          #+#    #+#             */
-/*   Updated: 2023/09/13 10:40:21 by hmarquer         ###   ########.fr       */
+/*   Created: 2023/09/13 10:37:34 by hmarquer          #+#    #+#             */
+/*   Updated: 2023/09/13 10:37:36 by hmarquer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stddef.h>
 
-char	*ft_strnstr(char *str, char *to_find, size_t n)
+char	*ft_strrchr(const char *str, int c)
 {
-	size_t	i;
-	size_t	j;
+	int	i;
 
-	if (*to_find == '\0')
-		return (str);
 	i = 0;
-	while (str[i] != '\0' && i < n)
-	{
-		j = 0;
-		while (str[i + j] == to_find[j] && str[i + j] != '\0' && (i + j) < n)
-		{
-			if (to_find[j + 1] == '\0')
-				return (str + i);
-			j++;
-		}
+	while (str[i] != '\0')
 		i++;
+	while (i >= 0)
+	{
+		if ((char)c == str[i])
+			return ((char *)str + i);
+		i--;
 	}
 	return (NULL);
 }

@@ -1,35 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strnstr.c                                       :+:      :+:    :+:   */
+/*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hmarquer <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/13 10:40:15 by hmarquer          #+#    #+#             */
-/*   Updated: 2023/09/13 10:40:21 by hmarquer         ###   ########.fr       */
+/*   Created: 2023/09/19 09:41:41 by hmarquer          #+#    #+#             */
+/*   Updated: 2023/09/19 09:41:45 by hmarquer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stddef.h>
+#include <stdlib.h>
+#include "libft.h"
 
-char	*ft_strnstr(char *str, char *to_find, size_t n)
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-	size_t	i;
-	size_t	j;
+	char			*res;
+	unsigned int	i;
 
-	if (*to_find == '\0')
-		return (str);
+	if (!s)
+		return (0);
+	res = malloc(ft_strlen(s) + 1);
+	if (!res)
+		return (NULL);
 	i = 0;
-	while (str[i] != '\0' && i < n)
+	while (s[i])
 	{
-		j = 0;
-		while (str[i + j] == to_find[j] && str[i + j] != '\0' && (i + j) < n)
-		{
-			if (to_find[j + 1] == '\0')
-				return (str + i);
-			j++;
-		}
+		res[i] = f(i, s[i]);
 		i++;
 	}
-	return (NULL);
+	res[i] = 0;
+	return (res);
 }

@@ -1,35 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strnstr.c                                       :+:      :+:    :+:   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hmarquer <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/13 10:40:15 by hmarquer          #+#    #+#             */
-/*   Updated: 2023/09/13 10:40:21 by hmarquer         ###   ########.fr       */
+/*   Created: 2023/09/17 16:21:59 by hmarquer          #+#    #+#             */
+/*   Updated: 2023/09/17 16:22:01 by hmarquer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stddef.h>
+#include <stdlib.h>
+#include "libft.h"
 
-char	*ft_strnstr(char *str, char *to_find, size_t n)
+char	*ft_strjoin(char const *s1, char const *s2)
 {
-	size_t	i;
-	size_t	j;
+	char	*result;
+	int		i;
+	int		j;
 
-	if (*to_find == '\0')
-		return (str);
+	result = malloc(ft_strlen(s1) + ft_strlen(s2) + 1);
+	if (!result)
+		return (0);
 	i = 0;
-	while (str[i] != '\0' && i < n)
+	while (s1[i])
 	{
-		j = 0;
-		while (str[i + j] == to_find[j] && str[i + j] != '\0' && (i + j) < n)
-		{
-			if (to_find[j + 1] == '\0')
-				return (str + i);
-			j++;
-		}
+		result[i] = s1[i];
 		i++;
 	}
-	return (NULL);
+	j = 0;
+	while (s2[j])
+	{
+		result[i + j] = s2[j];
+		j++;
+	}
+	result[i + j] = 0;
+	return (result);
 }

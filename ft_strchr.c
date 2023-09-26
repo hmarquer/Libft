@@ -10,6 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stddef.h>
+
 char	*ft_strchr(const char *str, int c)
 {
 	int	i;
@@ -17,7 +19,7 @@ char	*ft_strchr(const char *str, int c)
 	i = 0;
 	while (str[i] != '\0')
 	{
-		if (c == str[i])
+		if ((char)c == str[i])
 			return ((char *)str + i);
 		i++;
 	}
