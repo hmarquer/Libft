@@ -1,35 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strtrim.c                                       :+:      :+:    :+:   */
+/*   ft_lstadd_back.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hmarquer <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/17 16:31:44 by hmarquer          #+#    #+#             */
-/*   Updated: 2023/09/17 16:31:46 by hmarquer         ###   ########.fr       */
+/*   Created: 2023/09/29 15:17:35 by hmarquer          #+#    #+#             */
+/*   Updated: 2023/09/29 15:17:36 by hmarquer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
 #include "libft.h"
 
-char	*ft_strtrim(char const *s1, char const *set)
+void	ft_lstadd_back(t_list **lst, t_list *new)
 {
-	int	front;
-	int	back;
-	int	len;
+	t_list	*tmp;
 
-	if (!s1 || !set)
-		return (0);
-	front = 0;
-	while (s1[front] && ft_strchr(set, (int)s1[front]))
-		front++;
-	back = ft_strlen(s1) - 1;
-	while (back >= 0 && ft_strchr(set, (int)s1[back]))
-		back--;
-	if (back <= front)
-		len = 1;
+	tmp = ft_lstlast(*lst);
+	if (!tmp)
+		*lst = new;
 	else
-		len = back - front + 1;
-	return (ft_substr(s1, front, len));
+		tmp->next = new;
 }
