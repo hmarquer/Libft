@@ -10,7 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
 #include "libft.h"
 
 static size_t	ft_wordcount(char const *s, char c)
@@ -53,7 +52,16 @@ char	**ft_split(char const *s, char c)
 			len = 0;
 			while (*s && *s != c && ++len)
 				++s;
-			res[i++] = ft_substr(s - len, 0, len);
+			res[i] = ft_substr(s - len, 0, len);
+			if (!res[i])
+			{
+				i--;
+				while (i >= 0)
+					free(res[i--]);
+				free(res);
+				return (NULL);
+			}
+			i++;
 		}
 		else
 			++s;
